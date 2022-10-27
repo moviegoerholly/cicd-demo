@@ -8,6 +8,6 @@ jobs:
   build-job:
     name: Build Job
     runs-on: ubuntu-latest
-  steps:
-    - name: Not on Monday or Wednesday
-      run: echo "Starting the build job."
+    steps:
+      - name: Not on Monday or Wednesday
+        run: echo "Starting the build job."
