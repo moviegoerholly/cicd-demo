@@ -1,6 +1,7 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.micronaut.application") version "3.6.2"
+    id("io.micronaut.application") version "3.4.1"
+    id("groovy")
 }
 
 version = "0.1"
@@ -17,7 +18,11 @@ dependencies {
     implementation("jakarta.annotation:jakarta.annotation-api")
     runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
-
+    testImplementation("io.micronaut:micronaut-http-client")
+    testImplementation("io.micronaut.test:micronaut-test-spock")
+    testImplementation("org.spockframework:spock-core") {
+        exclude group: "org.codehaus.groovy", module: "groovy-all"
+    }
 }
 
 
@@ -32,7 +37,7 @@ java {
 graalvmNative.toolchainDetection = false
 micronaut {
     runtime("netty")
-    testRuntime("junit5")
+    testRuntime("spock2")
     processing {
         incremental(true)
         annotations("codes.recursive.*")

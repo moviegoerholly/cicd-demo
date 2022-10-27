@@ -20,6 +20,9 @@ jobs:
       - name: 'Check Java Version'
         run: |
           java --version
+      - name: 'Run Tests'
+        run: |
+          ./gradlew test
       - name: 'Assemble JAR'
         run: |
           ./gradlew assemble
@@ -32,4 +35,10 @@ jobs:
         with:
           name: 'cicd-demo-${{env.VERSION}}-all.jar'
           path: build/libs/*-all.jar
+      - name: 'Publish Test Report'
+        if: always()
+        uses: actions/upload-artifact@v2-preview
+        with:
+          name: 'test-report'
+          path: build/reports/tests/test/*
         
