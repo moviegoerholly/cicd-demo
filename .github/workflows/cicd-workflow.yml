@@ -19,5 +19,17 @@ jobs:
           java-version: 11
       - name: 'Check Java Version'
         run: |
-          java --version  
+          java --version
+      - name: 'Assemble JAR'
+        run: |
+          ./gradlew assemble
+      - name: 'Get Version Number'
+        run: |
+          echo "VERSION=$(./gradlew properties -q | grep "version:" |
+          awk '{print $2}')" >> $GITHUB_ENV
+      - name: 'Publish JAR'
+        uses: actions/upload-artifact@v3-preview
+        with:
+          name: 'cicd-demo-${{env.VERSION}}-all.jar'
+          path: build/libs/*-all.jar
         
