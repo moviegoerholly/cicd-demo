@@ -11,4 +11,6 @@
 
 - [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
 
+[![cicd-demo](https://github.com/moviegoerholly/cicd-demo/actions/workflows/cicd-workflow.yml/badge.svg)](https://github.com/moviegoerholly/cicd-demo/actions/workflows/cicd-workflow.yml)
+
 
