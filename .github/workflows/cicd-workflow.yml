@@ -9,5 +9,4 @@ jobs:
     name: Build Job
     runs-on: ubuntu-latest
   steps:
-    - name: Start Build Job
-      run: echo "Starting the build job."
+    run: echo "Starting the build job."
